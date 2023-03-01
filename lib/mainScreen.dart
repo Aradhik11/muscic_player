@@ -19,148 +19,36 @@ class _MainState extends State<Main> {
   //   futureFiles = storage.ref('/quran').listAll();
   // }
 
+  List audioTitles = ['HALQAH SERIES', 'FIQH FORUM', 'AL-FATWA', 'TASKIYATU-NAFS', 'FRIDAY SERMON', 'HADEETHUL-KHAMIS', 'MADRASATUNN-RAMADANIYYAH', 'AGBOYE ISLAM', 'CIO', 'CAMPS', 'FRIDAY SERMON', 'HAJJ'];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      drawer: NavBar(),
-      // body: FutureBuilder(
-      //   future: futureFiles,
-      //   builder: (context, snapshot) {
-      //     if (snapshot.hasData) {
-      //       final quran = snapshot.data!.items;
-      //
-      //       return ListView.builder(
-      //           itemCount: quran.length,
-      //           itemBuilder: (context, index) {
-      //             final file = quran[index];
-      //
-      //             return ListTile(
-      //               title: Text(file.name),
-      //               trailing: IconButton(
-      //                 onPressed: () {},
-      //                 icon: Icon(Icons.download),
-      //               ),
-      //             );
-      //           });
-      //     } else if (snapshot.hasError) {
-      //       return const Text('Error Occured');
-      //     } else {
-      //       return CircularProgressIndicator();
-      //     }
-      //   },
-      // ),
-      body: CustomScrollView(slivers: [
-        SliverAppBar(
-          title: Text('MUSIC PLAYER'),
-          actions: [
-            Padding(
-              padding: const EdgeInsets.fromLTRB(0, 0, 15, 0),
-              child: Icon(Icons.search),
+      appBar: AppBar(
+        leading: IconButton(onPressed: (){
+          Navigator.pop(context);
+        }, icon: Icon(Icons.arrow_back)),
+        title: Text('FOLDER 002'),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              height: 900,
+              child: ListView.builder(itemCount: 12, itemBuilder: (_,index){
+                return Column(
+                  children: [
+                    GestureDetector(onTap:(){
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
+                    }, child: ListTile(title: Text('Audio Name',),subtitle: Text('duration'),)),
+                    Divider()
+                  ],
+                );
+              }),
             )
           ],
-          floating: true,
         ),
-        SliverToBoxAdapter(
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 15),
-                  child: TextButton(
-                      onPressed: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => Home()));
-                      },
-                      child: Card(
-                        child: ListTile(
-                          title: Text('Lates audio on playList'),
-                          subtitle: Text('by shiek shaffi'),
-                        ),
-                      )),
-                ),
-                TextButton(
-                    onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Home()));
-                    },
-                    child: Card(
-                      child: ListTile(
-                        title: Text('Lates audio on playList'),
-                        subtitle: Text('by shiek shaffi'),
-                      ),
-                    )),
-                TextButton(
-                    onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Home()));
-                    },
-                    child: Card(
-                      child: ListTile(
-                        title: Text('Lates audio on playList'),
-                        subtitle: Text('by shiek shaffi'),
-                      ),
-                    )),
-                TextButton(
-                    onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Home()));
-                    },
-                    child: Card(
-                      child: ListTile(
-                        title: Text('Lates audio on playList'),
-                        subtitle: Text('by shiek shaffi'),
-                      ),
-                    )),
-                TextButton(
-                    onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Home()));
-                    },
-                    child: Card(
-                      child: ListTile(
-                        title: Text('Lates audio on playList'),
-                        subtitle: Text('by shiek shaffi'),
-                      ),
-                    )),
-                TextButton(
-                    onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Home()));
-                    },
-                    child: Card(
-                      child: ListTile(
-                        title: Text('Lates audio on playList'),
-                        subtitle: Text('by shiek shaffi'),
-                      ),
-                    )),
-                TextButton(
-                    onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Home()));
-                    },
-                    child: Card(
-                      child: ListTile(
-                        title: Text('Lates audio on playList'),
-                        subtitle: Text('by shiek shaffi'),
-                      ),
-                    )),
-                TextButton(
-                    onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Home()));
-                    },
-                    child: Card(
-                      child: ListTile(
-                        title: Text('Lates audio on playList'),
-                        subtitle: Text('by shiek shaffi'),
-                      ),
-                    )),
-              ],
-            ),
-          ),
-        ),
-      ]),
+      ),
     );
   }
 }
